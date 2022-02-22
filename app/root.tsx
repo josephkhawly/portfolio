@@ -4,11 +4,13 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
+  NavLink,
 } from "remix";
 import Header from "./components/Header";
 import styles from "./tailwind.css";
 import type { MetaFunction, LinksFunction } from "remix";
+import Drawer from "./components/Drawer";
 
 export const meta: MetaFunction = () => {
   return { title: "New Remix App" };
@@ -36,12 +38,16 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
-        <Header />
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
+      <body className="drawer">
+        <input id="my-drawer-3" type="checkbox" className="drawer-toggle"></input>
+        <div className="drawer-content">
+          <Header />
+          <Outlet />
+          <ScrollRestoration />
+          <Scripts />
+          <LiveReload />
+        </div>
+        <Drawer />
       </body>
     </html>
   );
