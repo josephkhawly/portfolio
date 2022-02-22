@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+    scroll-behavior: smooth;
+}
+
+.left-50 {
+    left: 50%;
+}
+
+.-z-1 {
+    z-index: -1;
+}
+
+.secondary-title {
+    @apply text-3xl font-bold;
+}
+
+.secondary-title::before {
+    content: "";
+    @apply block w-12 h-2 rounded-full mb-1;
+}
+
+.section-paragraph {
+    @apply my-6 w-full max-w-3xl;
+}
+
+.badge {
+    @apply px-4 py-2 text-sm rounded;
+}
+
+[id] {
+    scroll-margin-top: 100px;
+}
+
+.left-percentage {
+    left: 5%;
+}
+
+.nav-dot {
+    transition: background 200ms, border-color 200ms;
+}
+
+.selected-circle {
+    
+}
+
+.nav-dot:hover span {
+    opacity: 1;
+}
+
+.block-container {
+    @apply container mt-64 mx-auto px-8 md:px-14 lg:px-24 w-full;
+}
