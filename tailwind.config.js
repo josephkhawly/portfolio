@@ -1,6 +1,6 @@
 module.exports = {
     content: ["./app/**/*.{ts,tsx,jsx,js}"],
-    plugins: [require("daisyui")],
+    plugins: [require("@tailwindcss/typography"), require("daisyui")],
     theme: {
         extend: {},
     },
