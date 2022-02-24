@@ -15,8 +15,8 @@ type CardProps = {
 
 function ProjectCard({ image, name }: CardProps) {
     return (
-        <div className="border mockup-window bg-base-300 lg:h-72 hover:bg-[#0025FF] cursor-pointer transition-colors shadow-xl">
-            <p className="absolute top-3.5 right-4 font-mono">{name}</p>
+        <div className="group border mockup-window bg-base-300 lg:h-72 hover:bg-[#0025FF] cursor-pointer transition-colors shadow-xl">
+            <p className="absolute top-3.5 right-4 font-mono opacity-0 group-hover:opacity-100 transition-opacity">{name}</p>
             <img src={image} className="w-full h-full object-cover" />
         </div>
     )

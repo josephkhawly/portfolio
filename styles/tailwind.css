@@ -53,5 +53,5 @@ body {
 }
 
 .block-container {
-    @apply container mt-64 mx-auto px-8 md:px-14 lg:px-24 w-full;
+    @apply container mx-auto px-8 md:px-14 lg:px-24 w-full;
 }
