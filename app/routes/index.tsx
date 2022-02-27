@@ -12,7 +12,9 @@ const queryProjects = gql`
           name
           slug
           image {
-            url
+            handle
+            width
+            height
           }
         }
     }

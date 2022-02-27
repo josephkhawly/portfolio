@@ -1,6 +1,7 @@
 import { gql } from "graphql-request";
 import { json, LoaderFunction, useLoaderData } from "remix";
 import { graphcms } from "~/utils/graphcms";
+import { Img } from "~/components/Img";
 
 const queryProject = gql`
     query Project($slug: String!) {
@@ -9,8 +10,11 @@ const queryProject = gql`
         slug
         description
         demo
+        tags
         image {
-          url
+          handle
+          width
+          height
         }
       }
     }
@@ -23,16 +27,19 @@ export const loader: LoaderFunction = async ({ params }) => {
 }
 
 export default function ProjectSlug() {
-    let data = useLoaderData()
+    let { project } = useLoaderData()
     return (
         <div className="block-container grid lg:grid-cols-2 gap-10">
-            <div className="border mockup-window bg-base-300 shadow-xl">
-                <img src={data.project.image[0].url} className="w-full h-full object-cover" />
+            <div>
+                <div className="border mockup-window bg-base-300 shadow-xl">
+                    <Img image={project.image[0]} />
+                </div>
+                <h2 className="secondary-title">{project.name}</h2>
+                {project.tags.map((tag: string) => <span key={tag} className="badge badge-primary">{tag}</span>)}
             </div>
             <div>
-                <h2 className="secondary-title">{data.project.name}</h2>
                 <div className="prose">
-                    {data.project.description}
+                    {project.description}
                 </div>
             </div>
         </div>
