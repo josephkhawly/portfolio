@@ -7,6 +7,7 @@ import {
   ScrollRestoration,
 } from "remix";
 import Header from "./components/Header";
+import Footer from "~/components/Footer";
 import styles from "./tailwind.css";
 import type { MetaFunction, LinksFunction } from "remix";
 
@@ -38,10 +39,13 @@ export default function App() {
       </head>
       <body>
         <Header />
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
+        <main className="">
+          <Outlet />
+          <ScrollRestoration />
+          <Scripts />
+          <LiveReload />
+        </main>
+        <Footer />
       </body>
     </html>
   );

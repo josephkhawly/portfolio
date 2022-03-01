@@ -1,6 +1,5 @@
 // import Clients from "~/components/Clients";
 // import Hero from "~/components/Hero";
-// import Hire from "~/components/Hire";
 import Work from "~/components/Work";
 import { gql } from 'graphql-request';
 import { json, LoaderFunction, useLoaderData } from "remix";
@@ -32,7 +31,6 @@ export default function Index() {
       {/* <Hero /> */}
       <Work projects={data.projects} />
       {/* <Clients /> */}
-      {/* <Hire /> */}
     </>
   );
 }
