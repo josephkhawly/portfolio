@@ -2,6 +2,7 @@ import { gql } from "graphql-request";
 import { json, LoaderFunction, useLoaderData } from "remix";
 import { graphcms } from "~/utils/graphcms";
 import { Img } from "~/components/Img";
+import { marked } from "marked";
 
 const queryProject = gql`
     query Project($slug: String!) {
@@ -32,16 +33,13 @@ export default function ProjectSlug() {
         <div className="block-container grid lg:grid-cols-2 gap-10">
             <div>
                 <div className="border mockup-window bg-base-300 shadow-xl">
+                    <a href={project.demo} target="_blank" className="absolute top-3.5 right-5 font-mono link link-hover">{project.demo}</a>
                     <Img image={project.image[0]} />
                 </div>
-                <h2 className="secondary-title">{project.name}</h2>
-                {project.tags.map((tag: string) => <span key={tag} className="badge badge-primary">{tag}</span>)}
+                <h2 className="secondary-title mb-5">{project.name}</h2>
+                {project.tags.map((tag: string) => <span key={tag} className="badge badge-primary mr-3">{tag}</span>)}
             </div>
-            <div>
-                <div className="prose">
-                    {project.description}
-                </div>
-            </div>
+            <div dangerouslySetInnerHTML={{ __html: marked(project.description) }} />
         </div>
     )
 }
