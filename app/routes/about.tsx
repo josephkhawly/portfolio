@@ -23,7 +23,7 @@ export default function About() {
     
     return (
         <div className="block-container">
-            <div className="prose m-auto">
+            <div className="prose md:prose-lg m-auto">
                 <h1>{author.name}</h1>
                 <div dangerouslySetInnerHTML={{ __html: marked(author.bio) }} />
             </div>

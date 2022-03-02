@@ -1,4 +1,4 @@
-import { NavLink } from "remix";
+import { NavLink, Link} from "remix";
 
 export default function Header() {
     return (
@@ -7,8 +7,8 @@ export default function Header() {
             <div className="navbar-start md:hidden" />
             <div className="navbar-center md:navbar-end">
                 <ul className="menu menu-horizontal p-0">
-                    <li><NavLink to='/'>Home</NavLink></li>
-                    <li><NavLink to='/about'>About</NavLink></li>
+                    <li><Link className="btn btn-ghost" to='/'>Home</Link></li>
+                    <li><Link className="btn btn-ghost" to='/about'>About</Link></li>
                 </ul>
             </div>
             <div className="navbar-end md:hidden"></div>

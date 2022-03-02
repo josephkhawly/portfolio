@@ -15,7 +15,7 @@ function ProjectCard({ project }: CardProps) {
     return (
         <Link prefetch='intent' to={`/projects/${project.slug}`}>
             <div className="group border mockup-window bg-base-300">
-                <p className="absolute top-3.5 right-4 font-mono opacity-0 group-hover:opacity-100 transition-opacity">{project.name}</p>
+                <p className="absolute top-3.5 right-4 font-mono xl:opacity-0 group-hover:opacity-100 transition-opacity">{project.name}</p>
                 <Img image={project.image[0]} />
             </div>
         </Link>

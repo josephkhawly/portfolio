@@ -19,11 +19,6 @@ body {
     @apply text-3xl font-bold;
 }
 
-.secondary-title::before {
-    content: "";
-    @apply block w-12 h-2 rounded-full mb-1;
-}
-
 .section-paragraph {
     @apply my-6 w-full max-w-3xl;
 }
@@ -53,5 +48,5 @@ body {
 }
 
 .block-container {
-    @apply container mx-auto px-8 md:px-14 lg:px-24 w-full my-8 md:my-16;
+    @apply container mx-auto px-8 w-full my-8 md:my-16;
 }
