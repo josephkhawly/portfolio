@@ -1,5 +1,5 @@
 // import Clients from "~/components/Clients";
-// import Hero from "~/components/Hero";
+import Hero from "~/components/Hero";
 import Work from "~/components/Work";
 import { gql } from 'graphql-request';
 import { json, LoaderFunction, useLoaderData } from "remix";
@@ -28,7 +28,7 @@ export default function Index() {
   let data = useLoaderData()
   return (
     <>
-      {/* <Hero /> */}
+      <Hero />
       <Work projects={data.projects} />
       {/* <Clients /> */}
     </>

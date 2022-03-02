@@ -33,7 +33,7 @@ export default function ProjectSlug() {
         <div className="block-container grid lg:grid-cols-2 gap-10">
             <div>
                 <div className="border mockup-window bg-base-300 shadow-xl">
-                    <a href={project.demo} target="_blank" className="absolute top-3.5 right-5 font-mono link link-hover">{project.demo}</a>
+                    <a href={project.demo} target="_blank" rel='noopener noreferrer' className="absolute top-3.5 right-5 font-mono link link-hover">{project.demo}</a>
                     <Img image={project.image[0]} />
                 </div>
                 <h2 className="secondary-title mb-5">{project.name}</h2>

@@ -43,6 +43,7 @@ export default function Work({ projects }: { projects: Project[] }) {
         <div className="block-container">
             <section className="w-full">
                 <h2 className="secondary-title">Projects I've worked on</h2>
+                <p className="section-paragraph">I’ve contributed to over 20 web projects in my career. These are a few that I'm most proud of.</p>
                 <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mt-6">
                     {projects.map(project => <ProjectCard key={project.slug} project={project} />)}
                 </div>
