@@ -36,10 +36,14 @@ export default function ProjectSlug() {
                     <a href={project.demo} target="_blank" rel='noopener noreferrer' className="absolute top-3.5 right-5 font-mono link link-hover">{project.demo}</a>
                     <Img image={project.image[0]} />
                 </div>
-                <h2 className="secondary-title mb-5">{project.name}</h2>
-                {project.tags.map((tag: string) => <span key={tag} className="badge badge-primary mr-3">{tag}</span>)}
             </div>
-            <div dangerouslySetInnerHTML={{ __html: marked(project.description) }} />
+            <div>
+                <div className="mb-5">
+                    <h2 className="secondary-title mb-2">{project.name}</h2>
+                    {project.tags.map((tag: string) => <span key={tag} className="badge badge-primary mr-3">{tag}</span>)}
+                </div>
+                <div className="prose" dangerouslySetInnerHTML={{ __html: marked(project.description) }} />
+            </div>
         </div>
     )
 }
