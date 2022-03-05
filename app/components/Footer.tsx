@@ -1,4 +1,5 @@
 import { SiAngellist, SiGithub, SiLinkedin } from 'react-icons/si';
+
 export default function Footer() {
     const iconSize = 24
     return (
