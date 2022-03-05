@@ -1,6 +1,6 @@
 import { graphcms } from "~/utils/graphcms";
 import { gql } from 'graphql-request';
-import { json, LoaderFunction, useLoaderData } from "remix";
+import { json, LoaderFunction, useLoaderData, MetaFunction } from "remix";
 import { marked } from "marked";
 
 const queryBio = gql`
@@ -18,9 +18,15 @@ export let loader: LoaderFunction = async () => {
     return json({ author })
 }
 
+export const meta: MetaFunction = () => {
+    return {
+        title: "About | Joseph Khawly",
+    };
+};
+
 export default function About() {
     let { author } = useLoaderData()
-    
+
     return (
         <div className="block-container">
             <div className="prose md:prose-lg m-auto">
