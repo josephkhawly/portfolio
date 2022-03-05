@@ -1,5 +1,5 @@
 import { gql } from "graphql-request";
-import { json, LoaderFunction, useLoaderData } from "remix";
+import { json, LoaderFunction, useLoaderData, MetaFunction } from "remix";
 import { graphcms } from "~/utils/graphcms";
 import { Img } from "~/components/Img";
 import { marked } from "marked";
@@ -26,6 +26,12 @@ export const loader: LoaderFunction = async ({ params }) => {
     const { project } = await graphcms.request(queryProject, { slug })
     return json({ project })
 }
+
+export const meta: MetaFunction = ({ data }) => {
+    return {
+        title: `${data.project.name} | Projects | Joseph Khawly`,
+    };
+};
 
 export default function ProjectSlug() {
     let { project } = useLoaderData()

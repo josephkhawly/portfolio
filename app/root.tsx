@@ -12,7 +12,10 @@ import styles from "./tailwind.css";
 import type { MetaFunction, LinksFunction } from "remix";
 
 export const meta: MetaFunction = () => {
-  return { title: "New Remix App" };
+  return { 
+    title: "Joseph Khawly",
+    description: "Hi, I'm Joseph. I'm a full-stack developer building websites with Django and React."
+  };
 };
 
 export const links: LinksFunction = () => {
