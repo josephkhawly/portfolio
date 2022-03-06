@@ -7,10 +7,20 @@ import { graphcms } from "~/utils/graphcms";
 
 const queryProjects = gql`
     {
-        projects {
+        projects(orderBy: name_ASC) {
           name
           slug
           image {
+            handle
+            width
+            height
+          }
+        }
+
+        author(where: {slug: "joseph-khawly"}) {
+          name
+          intro
+          picture {
             handle
             width
             height
@@ -20,15 +30,15 @@ const queryProjects = gql`
 `
 
 export let loader: LoaderFunction = async () => {
-  const { projects } = await graphcms.request(queryProjects)
-  return json({ projects })
+  const { projects, author } = await graphcms.request(queryProjects)
+  return json({ projects, author })
 }
 
 export default function Index() {
   let data = useLoaderData()
   return (
     <>
-      <Hero />
+      <Hero author={data.author} />
       <Work projects={data.projects} />
       {/* <Clients /> */}
     </>
