@@ -23,10 +23,6 @@ body {
     @apply my-6 w-full max-w-3xl;
 }
 
-.badge {
-    @apply px-4 py-2 text-sm rounded;
-}
-
 [id] {
     scroll-margin-top: 100px;
 }
