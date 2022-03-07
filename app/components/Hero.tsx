@@ -15,7 +15,7 @@ export default function Hero({ author }: { author: Author }) {
                     <p className="py-4">{author.intro}</p>
                 </div>
                 <div className="avatar mask mask-squircle">
-                    <div className="w-28 rounded">
+                    <div className="w-36 rounded">
                         <Img image={author.picture} />
                     </div>
                 </div>
