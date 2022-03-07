@@ -20,11 +20,6 @@ const queryProjects = gql`
         author(where: {slug: "joseph-khawly"}) {
           name
           intro
-          picture {
-            handle
-            width
-            height
-          }
         }
     }
 `
