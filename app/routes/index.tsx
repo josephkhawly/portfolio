@@ -35,7 +35,6 @@ export default function Index() {
     <>
       <Hero author={data.author} />
       <Work projects={data.projects} />
-      {/* <Clients /> */}
     </>
   );
 }
