@@ -21,6 +21,20 @@ const queryProject = gql`
   }
 `
 
+export async function generateStaticParams() {
+  const { projects } = await graphcms.request(gql`
+    query {
+      projects {
+        slug
+      }
+    }
+  `)
+
+  return projects.map((project: { slug: string }) => ({
+    params: { slug: project.slug },
+  }))
+}
+
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
@@ -32,8 +46,8 @@ export async function generateMetadata(props: {
   }
 }
 
-export default async function ProjectPage(props: { params: Promise<{ slug: string }> }) {
-  const { slug } = await props.params
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
   const { project } = await graphcms.request(queryProject, { slug })
 
   return (
