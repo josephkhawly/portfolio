@@ -1,13 +1,17 @@
 module.exports = {
-    content: ["./app/**/*.{ts,tsx,jsx,js}"],
-    plugins: [require("@tailwindcss/typography"), require("daisyui")],
-    theme: {
-        extend: {},
-    },
-    variants: {
-        extend: {},
-    },
-    daisyui: {
-        themes: ["synthwave"],
-    },
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  plugins: [require('@tailwindcss/typography'), require('daisyui')],
+  theme: {
+    extend: {},
+  },
+  variants: {
+    extend: {},
+  },
+  daisyui: {
+    themes: ['synthwave'],
+  },
 }
