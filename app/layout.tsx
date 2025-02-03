@@ -2,6 +2,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import './globals.css'
 import { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/react'
 
 export const metadata: Metadata = {
   title: 'Joseph Khawly',
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className='grow'>{children}</main>
           <Footer />
         </div>
+        <Analytics />
       </body>
     </html>
   )
