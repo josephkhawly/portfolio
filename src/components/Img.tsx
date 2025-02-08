@@ -1,11 +1,8 @@
+import { Media } from '@/payload-types'
 import Image from 'next/image'
 
-export interface ImageType {
-  url: string
-  width: number
-  height: number
-}
-
-export function Img({ image }: { image: ImageType }) {
-  return <Image src={image.url} alt='' width={image.width} height={image.height} />
+export function Img({ image }: { image: Media }) {
+  return (
+    <Image src={image?.url || ''} alt='' width={image?.width || 0} height={image?.height || 0} />
+  )
 }

@@ -1,37 +1,46 @@
-import { gql } from 'graphql-request'
-import { graphcms } from '@/utils/graphcms'
 import { Img } from '@/components/Img'
 import { marked } from 'marked'
 import { Metadata } from 'next'
+import { getPayload } from 'payload'
+import config from '@payload-config'
+import { Media } from '@/payload-types'
+import { cache } from 'react'
 
-const queryProject = gql`
-  query Project($slug: String!) {
-    project(where: { slug: $slug }) {
-      name
-      slug
-      description
-      demo
-      tags
-      image {
-        url
-        width
-        height
-      }
-    }
-  }
-`
+const getProjectBySlug = cache(async ({ slug }: { slug: string }) => {
+
+  const payload = await getPayload({ config })
+
+  const result = await payload.find({
+    collection: 'projects',
+    limit: 1,
+    pagination: false,
+    where: {
+      slug: {
+        equals: slug,
+      },
+    },
+  })
+
+  return result.docs?.[0] || null
+})
 
 export async function generateStaticParams() {
-  const { projects } = await graphcms.request(gql`
-    query {
-      projects {
-        slug
-      }
-    }
-  `)
+  const payload = await getPayload({ config })
 
-  return projects.map((project: { slug: string }) => ({
-    params: { slug: project.slug },
+  const projects = await payload.find({
+    collection: 'projects',
+    draft: false,
+    limit: 1000,
+    pagination: false,
+    select: {
+      slug: true,
+    },
+  })
+
+  return projects.docs.map((project) => ({
+    params: {
+      slug: project.slug,
+    },
   }))
 }
 
@@ -39,38 +48,38 @@ export async function generateMetadata(props: {
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await props.params
-  const { project } = await graphcms.request(queryProject, { slug })
+  const project = await getProjectBySlug({ slug })
 
   return {
-    title: `${project.name} | Projects | Joseph Khawly`,
+    title: `${project.title} | Projects | Joseph Khawly`,
   }
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const { project } = await graphcms.request(queryProject, { slug })
+  const project = await getProjectBySlug({ slug })
 
   return (
     <div className='block-container grid lg:grid-cols-2 gap-10'>
       <div>
         <div className='border mockup-window bg-base-300 shadow-xl'>
           <a
-            href={project.demo}
+            href={project.demo || ''}
             target='_blank'
             rel='noopener noreferrer'
             className='absolute top-4 right-5 font-mono link link-hover text-sm'
           >
-            {project.demo.replace(/^https?:\/\//, '')}
+            {project.demo?.replace(/^https?:\/\//, '')}
           </a>
-          <Img image={project.image[0]} />
+          <Img image={project.image as Media} />
         </div>
       </div>
       <div>
         <div className='mb-5'>
-          <h2 className='secondary-title mb-2'>{project.name}</h2>
-          {project.tags.map((tag: string) => (
-            <span key={tag} className='badge badge-primary mr-3'>
-              {tag}
+          <h2 className='secondary-title mb-2'>{project.title}</h2>
+          {project.tags.map((tag) => (
+            <span key={tag.id} className='badge badge-primary mr-3'>
+              {tag.value}
             </span>
           ))}
         </div>
