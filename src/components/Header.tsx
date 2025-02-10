@@ -8,7 +8,7 @@ export default function Header() {
             <div className="navbar-center md:navbar-end">
                 <ul className="menu menu-horizontal p-0">
                     <li><Link className="btn btn-ghost" href='/'>Home</Link></li>
-                    <li><Link className="btn btn-ghost" href='/about'>About</Link></li>
+                    {/* <li><Link className="btn btn-ghost" href='/about'>About</Link></li> */}
                 </ul>
             </div>
             <div className="navbar-end md:hidden"></div>
