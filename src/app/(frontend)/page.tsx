@@ -2,23 +2,10 @@ import { getPayload } from 'payload'
 import React from 'react'
 
 import config from '@payload-config'
-import Hero from '@/components/Hero'
 import Work from '@/components/Work'
-import { graphcms } from '@/utils/graphcms'
-import { gql } from 'graphql-request'
-
-const queryProjects = gql`
-  {
-    author(where: { slug: "joseph-khawly" }) {
-      name
-      intro
-    }
-  }
-`
+import { getCachedGlobal } from '@/utils/getGlobals'
 
 export default async function HomePage() {
-  const { author } = await graphcms.request(queryProjects)
-
   const payload = await getPayload({ config })
   const projects = await payload.find({
     collection: 'projects',
@@ -30,9 +17,18 @@ export default async function HomePage() {
     },
   })
 
+  const author = await getCachedGlobal('hero')()
+
   return (
     <>
-      <Hero author={author} />
+      <div className='hero h-96 bg-primary text-primary-content'>
+        <div className='text-center hero-content flex-col-reverse md:flex-row'>
+          <div className='text-center'>
+            <h1 className='text-4xl md:text-5xl font-bold'>I'm {author.name}</h1>
+            <p className='py-4'>{author.intro}</p>
+          </div>
+        </div>
+      </div>
       <Work projects={projects.docs} />
     </>
   )
