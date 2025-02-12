@@ -7,7 +7,6 @@ import { Media } from '@/payload-types'
 import { cache } from 'react'
 
 const getProjectBySlug = cache(async ({ slug }: { slug: string }) => {
-
   const payload = await getPayload({ config })
 
   const result = await payload.find({
@@ -62,15 +61,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   return (
     <div className='block-container grid lg:grid-cols-2 gap-10'>
       <div>
-        <div className='border mockup-window bg-base-300 shadow-xl'>
-          <a
-            href={project.demo || ''}
-            target='_blank'
-            rel='noopener noreferrer'
-            className='absolute top-4 right-5 font-mono link link-hover text-sm'
-          >
-            {project.demo?.replace(/^https?:\/\//, '')}
-          </a>
+        <div className='border mockup-browser bg-base-300 shadow-xl'>
+          <div className='mockup-browser-toolbar'>
+            <div className='input'>
+              <a
+                href={project.demo || ''}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='font-mono link link-hover'
+              >
+                {project.demo}
+              </a>
+            </div>
+          </div>
           <Img image={project.image as Media} />
         </div>
       </div>
