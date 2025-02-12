@@ -1,10 +1,15 @@
-module.exports = {
+import typography from '@tailwindcss/typography'
+import daisyui from 'daisyui'
+
+/** @type {import('tailwindcss').Config} */
+const config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  plugins: [require('@tailwindcss/typography'), require('daisyui')],
+  plugins: [typography, daisyui],
   theme: {
     extend: {},
   },
@@ -15,3 +20,5 @@ module.exports = {
     themes: ['synthwave'],
   },
 }
+
+export default config

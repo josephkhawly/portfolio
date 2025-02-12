@@ -1,14 +1,9 @@
 import Link from 'next/link'
-import { ImageType, Img } from './Img'
-
-type Project = {
-  name: string
-  slug: string
-  image: ImageType[]
-}
+import { Media, Project } from '@/payload-types'
+import { Img } from './Img'
 
 type CardProps = {
-  project: Project
+  project: Partial<Project>
 }
 
 function ProjectCard({ project }: CardProps) {
@@ -16,15 +11,15 @@ function ProjectCard({ project }: CardProps) {
     <Link href={`/projects/${project.slug}`}>
       <div className='group border mockup-window bg-base-300'>
         <p className='absolute top-3.5 right-4 font-mono xl:opacity-0 group-hover:opacity-100 transition-opacity text-sm md:text-base'>
-          {project.name}
+          {project.title}
         </p>
-        <Img image={project.image[0]} />
+        <Img image={project.image as Media} />
       </div>
     </Link>
   )
 }
 
-export default function Work({ projects }: { projects: Project[] }) {
+export default function Work({ projects }: { projects: Partial<Project>[] }) {
   return (
     <div className='block-container'>
       <section className='w-full'>
