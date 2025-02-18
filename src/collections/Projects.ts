@@ -1,4 +1,5 @@
 import { slugField } from '@/fields/slug'
+import { revalidateDelete, revalidateProject } from '@/hooks/revalidateProject'
 import { CollectionConfig } from 'payload'
 
 export const Projects: CollectionConfig = {
@@ -57,4 +58,8 @@ export const Projects: CollectionConfig = {
     ...slugField(),
   ],
   timestamps: true,
+  hooks: {
+    afterChange: [revalidateProject],
+    afterDelete: [revalidateDelete],
+  },
 }

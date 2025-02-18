@@ -6,6 +6,10 @@ import config from '@payload-config'
 import { Media } from '@/payload-types'
 import { cache } from 'react'
 
+export const revalidate = 600
+ 
+export const dynamicParams = true
+
 const getProjectBySlug = cache(async ({ slug }: { slug: string }) => {
   const payload = await getPayload({ config })
 
