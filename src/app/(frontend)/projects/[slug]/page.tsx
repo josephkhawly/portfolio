@@ -4,28 +4,11 @@ import { Metadata } from 'next'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { Media } from '@/payload-types'
-import { cache } from 'react'
+import { getProjectBySlug } from '@/utils/getProjects'
 
 export const revalidate = 600
  
 export const dynamicParams = true
-
-const getProjectBySlug = cache(async ({ slug }: { slug: string }) => {
-  const payload = await getPayload({ config })
-
-  const result = await payload.find({
-    collection: 'projects',
-    limit: 1,
-    pagination: false,
-    where: {
-      slug: {
-        equals: slug,
-      },
-    },
-  })
-
-  return result.docs?.[0] || null
-})
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config })
