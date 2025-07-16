@@ -5,28 +5,28 @@
   "license": "",
   "type": "module",
   "dependencies": {
-    "@payloadcms/db-vercel-postgres": "latest",
-    "@payloadcms/next": "latest",
-    "@payloadcms/payload-cloud": "latest",
-    "@payloadcms/richtext-lexical": "latest",
-    "@payloadcms/storage-vercel-blob": "^3.22.0",
-    "@payloadcms/ui": "latest",
+    "@payloadcms/db-vercel-postgres": "^3.47.0",
+    "@payloadcms/next": "^3.47.0",
+    "@payloadcms/payload-cloud": "^3.47.0",
+    "@payloadcms/richtext-lexical": "^3.47.0",
+    "@payloadcms/storage-vercel-blob": "^3.47.0",
+    "@payloadcms/ui": "^3.47.0",
     "@tailwindcss/typography": "^0.5.16",
     "@types/marked": "^4.0.2",
     "@vercel/analytics": "^1.4.1",
     "cross-env": "^7.0.3",
     "marked": "^4.0.12",
-    "next": "^15.1.6",
-    "payload": "latest",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "next": "15.4.1",
+    "payload": "^3.47.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "react-icons": "^5.4.0",
     "sharp": "^0.33.5"
   },
   "devDependencies": {
     "@types/node": "^22.13.0",
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6",
     "autoprefixer": "^10.4.2",
     "daisyui": "^4.12.23",
     "graphql": "^16.10.0",
@@ -47,5 +47,11 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "pnpm": {
+    "overrides": {
+      "@types/react": "19.1.8",
+      "@types/react-dom": "19.1.6"
+    }
+  }
 }
