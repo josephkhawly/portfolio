@@ -5,9 +5,10 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { Media } from '@/payload-types'
 import { cache } from 'react'
+import Link from 'next/link'
 
 export const revalidate = 600
- 
+
 export const dynamicParams = true
 
 const getProjectBySlug = cache(async ({ slug }: { slug: string }) => {
@@ -65,17 +66,17 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   return (
     <div className='block-container grid lg:grid-cols-2 gap-10'>
       <div>
-        <div className='border mockup-browser bg-base-300 shadow-xl'>
+        <div className='mockup-browser border-base-300 border bg-base-300 shadow-xl'>
           <div className='mockup-browser-toolbar'>
             <div className='input'>
-              <a
-                href={project.demo || ''}
+              <Link
+                href={project.demo ?? ''}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='font-mono link link-hover'
+                className='link link-hover'
               >
                 {project.demo}
-              </a>
+              </Link>
             </div>
           </div>
           <Img image={project.image as Media} />

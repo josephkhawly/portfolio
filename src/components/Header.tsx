@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Header() {
     return (
-        <header className="navbar bg-neutral fixed left-0 bottom-0 md:relative z-50">
+        <header className="navbar  md:relative z-50">
             <Link className="navbar-start px-2 mx-2 text-xl hidden md:block font-bold" href='/'>Joseph Khawly</Link>
             <div className="navbar-start md:hidden" />
             <div className="navbar-center md:navbar-end">

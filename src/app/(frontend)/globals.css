@@ -1,44 +1,41 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin "@tailwindcss/typography";
+@plugin "daisyui" {
+  themes: 'synthwave';
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 html,
 body {
-    scroll-behavior: smooth;
-}
-
-.left-50 {
-    left: 50%;
+  scroll-behavior: smooth;
 }
 
 .secondary-title {
-    @apply text-3xl font-bold;
-}
-
-.section-paragraph {
-    @apply my-6 w-full max-w-3xl;
+  @apply text-3xl font-bold;
 }
 
 [id] {
-    scroll-margin-top: 100px;
-}
-
-.left-percentage {
-    left: 5%;
-}
-
-.nav-dot {
-    transition: background 200ms, border-color 200ms;
-}
-
-.selected-circle {
-    
-}
-
-.nav-dot:hover span {
-    opacity: 1;
+  scroll-margin-top: 100px;
 }
 
 .block-container {
-    @apply container mx-auto px-8 w-full my-8 md:my-16;
+  @apply container mx-auto px-8 w-full my-8 md:my-16;
 }

@@ -21,10 +21,10 @@ export default async function HomePage() {
 
   return (
     <>
-      <div className='hero h-96 bg-primary text-primary-content'>
+      <div className='hero h-96 bg-secondary text-secondary-content'>
         <div className='text-center hero-content flex-col-reverse md:flex-row'>
           <div className='text-center'>
-            <h1 className='text-4xl md:text-5xl font-bold'>I'm {name}</h1>
+            <h1 className='text-4xl md:text-5xl font-bold'>I&apos;m {name}</h1>
             <p className='py-4'>{intro}</p>
           </div>
         </div>
