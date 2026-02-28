@@ -23,7 +23,7 @@ export default function Work({ projects }: { projects: Partial<Project>[] }) {
   return (
     <div className='block-container'>
       <section className='w-full'>
-        <h2 className='secondary-title'>Projects I've worked on</h2>
+        <h2 className='secondary-title'>Projects I&apos;ve worked on</h2>
         <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mt-6'>
           {projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
