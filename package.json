@@ -38,7 +38,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build --webpack",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint .",
     "payload": "cross-env PAYLOAD_CONFIG_PATH=./src/payload.config.ts payload",
